@@ -18,6 +18,6 @@ public class TempController {
 	}
 	@RequestMapping("/static")
 	public @ResponseBody String getStaticTempText(){
-		return "This is a static temp text [updated]/"+tempService.getStaticTempTest();
+		return "This is a static temp text [updated on MAC now]/"+tempService.getStaticTempTest();
 	}
 }
