@@ -1,12 +1,14 @@
 package org.git.spring.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-
 import org.git.spring.model.Person;
 import org.git.spring.model.TempModel;
 import org.git.spring.service.TempService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,8 +41,26 @@ public class TempController {
 	}
 	
 	@RequestMapping("/fetchrecords")
-	public @ResponseBody String fetchRecords(){
+	public  String fetchRecords(){
 		return "Total Records : "+tempService.fetchRecords();
+	}
+	
+	@RequestMapping(value="/entry", method=RequestMethod.GET)
+	public String entry(){
+		return "new";
+	}
+	
+	@RequestMapping(value="/new", method=RequestMethod.POST)
+	public String newRecord(Person person,BindingResult bindingResult){
+		System.out.println("val ..."+person);
+		return "new";
+	}
+	
+	
+	@RequestMapping("/list")
+	public @ResponseBody List<Person> listRecords(){
+		//return "Total Records : "+tempService.fetchRecords();
+		return tempService.listAllRecords();
 	}
 	
 	@RequestMapping(value="/citytemp", method=RequestMethod.GET)

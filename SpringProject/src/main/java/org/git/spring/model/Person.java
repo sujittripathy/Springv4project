@@ -1,12 +1,13 @@
 package org.git.spring.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="PERSON")
 public class Person implements Serializable{
 	private static final long serialVersionUID = 4660939413105093769L;
 	
@@ -19,7 +20,7 @@ public class Person implements Serializable{
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
