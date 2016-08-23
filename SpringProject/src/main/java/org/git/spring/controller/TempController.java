@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+
 import org.git.spring.model.Person;
 import org.git.spring.model.TempModel;
 import org.git.spring.service.TempService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/temp")
@@ -40,10 +42,7 @@ public class TempController {
 		return "A new Person Added : Name > "+name;
 	}
 	
-	@RequestMapping("/fetchrecords")
-	public  String fetchRecords(){
-		return "Total Records : "+tempService.fetchRecords();
-	}
+	
 	
 	@RequestMapping(value="/entry", method=RequestMethod.GET)
 	public String entry(){
@@ -56,6 +55,12 @@ public class TempController {
 		return "new";
 	}
 	
+	@RequestMapping("/count")
+	public ModelAndView fetchRecords(){
+		ModelAndView model=new ModelAndView("view");
+		model.addObject("message",tempService.fetchRecords());
+		return model;
+	}
 	
 	@RequestMapping("/list")
 	public @ResponseBody List<Person> listRecords(){
