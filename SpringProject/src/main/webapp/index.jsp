@@ -6,7 +6,7 @@
 <br/>
 <a href="/temp/list">List All</a>
 <br/>
-<a href="/temp/entry">New</a>
+<a href="/temp/new">New</a>
 <br/>
 </body>
 </html>

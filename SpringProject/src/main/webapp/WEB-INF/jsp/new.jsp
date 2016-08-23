@@ -1,28 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page isELIgnored="false" %>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>New Record</title>
-</head>
 <body>
-	<sf:form method="POST" modelAttribute="person" commandName="temp">
+	<h1>New Person Record</h1>
+	<h2>Status : ${status}</h2>
+	<form:form modelAttribute="person" action="/temp/submit">
 		<table>
 			<tr>
 				<th>Name</th>
-				<td><sf:input path="name" size="30" id="name"/></td>
+				<td><form:input path="name"/></td>
 			</tr>
 			<tr>
 				<th>Country</th>
-				<td><sf:input path="country" size="30" id="country"/></td>
+				<td><form:input path="country"/></td>
 			</tr>
 			<tr>
-				<td><input type="submit" name="Submit"/></td>
+				<td><input type="submit" value="Submit"/></td>
 			</tr>
 			
 		</table>
-	</sf:form>
+	</form:form>
 </body>
 </html>
