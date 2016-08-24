@@ -2,10 +2,13 @@ package org.git.spring.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.git.spring.model.Person;
 import org.git.spring.model.TempModel;
 import org.git.spring.service.TempService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,14 +54,19 @@ public class TempController {
 		return "new";
 	}
 	
-	@RequestMapping(value="/submit")
-	public ModelAndView submit(@ModelAttribute("person") Person person){
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("success");
-		System.out.println(person.getName()+","+person.getCountry());
-		person.setId(tempService.fetchRecords()+1);
-		tempService.addPerson(person);
-		mav.addObject("status","SUCCESS");
+	@RequestMapping(value = "/submit", method=RequestMethod.POST)
+	public ModelAndView submit (@Valid Person person, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		if (result.hasErrors()) {
+			System.out.println("Error");
+			mav.setViewName("new");
+		} else {
+			System.out.println("No Error");
+			mav.setViewName("success");
+			System.out.println(person.getName() + "," + person.getCountry());
+			tempService.addPerson(person);
+			mav.addObject("status", "SUCCESS");
+		}
 		return mav;
 	}
 	
@@ -75,6 +83,15 @@ public class TempController {
 		model.addObject("personList",tempService.listAllRecords());
 		System.out.println("Total Records Fetched : "+tempService.listAllRecords());
 		return model;
+	}
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public ModelAndView delete(@ModelAttribute Person person){
+		ModelAndView mav=new ModelAndView();
+		System.out.println("delete method --"+person.getId());
+		tempService.deletePerson(person);
+		mav.setViewName("success");
+		return mav;
 	}
 	
 	@RequestMapping(value="/citytemp", method=RequestMethod.GET)

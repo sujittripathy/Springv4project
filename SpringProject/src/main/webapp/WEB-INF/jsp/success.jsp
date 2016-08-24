@@ -3,7 +3,7 @@
 <%@page isELIgnored="false"%>
 <html>
 <body>
-	Record Added Successfully <br>
+	Successful Page <br>
 	<a href="/temp/list">List All Records</a>
 </body>
 </html>

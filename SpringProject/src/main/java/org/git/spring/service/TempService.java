@@ -31,4 +31,8 @@ public class TempService {
 	public List<Person> listAllRecords(){
 		return springProjectDAO.listAllRecords();
 	}
+	
+	public void deletePerson(Person p){
+		springProjectDAO.deletePerson(p);
+	}
 }

@@ -41,5 +41,16 @@ public class SpringProjectDAO {
 			System.out.println("Total Records" + result.size() + ", result :: "+result);
 			return result;
 		}
+		
+		public void deletePerson(Person p){
+			Session session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			String hql = "delete from Person where id = "+p.getId();
+			int i = session.createSQLQuery(hql).executeUpdate();
+			//session.delete(p);
+			session.getTransaction().commit();
+			//session.flush();
+			System.out.println("Object deleted successfully ..." + i);
+		}
 	
 }

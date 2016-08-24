@@ -3,8 +3,12 @@ package org.git.spring.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="PERSON")
@@ -12,7 +16,10 @@ public class Person implements Serializable{
 	private static final long serialVersionUID = 4660939413105093769L;
 	
 	private int id;
+	@NotNull
+	@Size(min=10,max=20)
 	private String name;
+	@NotNull
 	private String country;
 	
 	public Person(){
@@ -20,7 +27,7 @@ public class Person implements Serializable{
 	}
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

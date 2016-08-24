@@ -16,8 +16,10 @@
 				<td><c:out value="${person.id}" /></td>
 				<td><c:out value="${person.name}" /></td>
 				<td><c:out value="${person.country}" /></td>
+				<td><a href="/temp/delete/${person.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/">Home</a>
 </body>
 </html>
