@@ -55,19 +55,20 @@ public class TempController {
 	}
 	
 	@RequestMapping(value = "/submit", method=RequestMethod.POST)
-	public ModelAndView submit (@Valid Person person, BindingResult result) {
-		ModelAndView mav = new ModelAndView();
+	public String submit (@Valid Person person, BindingResult result) {
+		//ModelAndView mav = new ModelAndView();
 		if (result.hasErrors()) {
-			System.out.println("Error");
-			mav.setViewName("new");
-		} else {
+			System.out.println("!!! Error !!!");
+			//mav.setViewName("redirect:/new");
+			return "new";
+		} //else {
 			System.out.println("No Error");
-			mav.setViewName("success");
+			//mav.setViewName("success");
 			System.out.println(person.getName() + "," + person.getCountry());
 			tempService.addPerson(person);
-			mav.addObject("status", "SUCCESS");
-		}
-		return mav;
+			//mav.addObject("status", "SUCCESS");
+		//}
+		return "success";
 	}
 	
 	@RequestMapping("/count")

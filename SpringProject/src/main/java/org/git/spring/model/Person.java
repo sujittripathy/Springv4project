@@ -5,21 +5,19 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="PERSON")
 public class Person implements Serializable{
 	private static final long serialVersionUID = 4660939413105093769L;
 	
 	private int id;
 	@NotNull
-	@Size(min=10,max=20)
+	@NotEmpty(message="Name can't be empty")
 	private String name;
 	@NotNull
+	@NotEmpty(message="Country can't be empty")
 	private String country;
 	
 	public Person(){
