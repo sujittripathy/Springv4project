@@ -11,6 +11,6 @@
 <h2>Please click below link to proceed</h2> <br>
 <h3><a href="/cert/list-all-cert">List All Certification</a></h3><br>
 <h3><a href="">New Employee Enroll</a></h3>
-<h3><a href="">New Certification Enroll</a></h3>
+<h3><a href="/cert/add-new-cert?new">New Certification Enroll</a></h3>
 </body>
 </html>

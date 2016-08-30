@@ -13,6 +13,11 @@ public class EmployeeCertDAOImpl {
 
 	public SessionFactory sessionFactory;
 	
+	public void addNewCertification(Certification cert){
+		Session session = this.sessionFactory.openSession();
+		session.save(cert);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Certification> getAllCertifications(){
 		Session session = this.sessionFactory.openSession();
