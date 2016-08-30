@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Person;
 import org.git.spring.model.TempModel;
 import org.git.spring.service.TempService;
@@ -21,10 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class TempController {
 
 	private TempService tempService;
+	private EmployeeCertDAOImpl employeeCertDAOImpl;
 	
 	@Inject
-	public TempController(TempService ts){
+	public TempController(TempService ts,EmployeeCertDAOImpl e){
 		this.tempService = ts;
+		this.employeeCertDAOImpl=e;
 	}
 	
 	@RequestMapping("/static")
@@ -83,6 +86,7 @@ public class TempController {
 		ModelAndView model=new ModelAndView("view");
 		model.addObject("personList",tempService.listAllRecords());
 		System.out.println("Total Records Fetched : "+tempService.listAllRecords());
+		System.out.println("Size is>>"+employeeCertDAOImpl.getAllCertifications().size());
 		return model;
 	}
 	
