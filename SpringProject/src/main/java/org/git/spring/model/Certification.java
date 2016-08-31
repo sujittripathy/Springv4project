@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class Certification {
 	@Id
 	@GeneratedValue
-	private String certID;
+	private int certID;
 	private String certName;
 	private String version;
 	private String module;
@@ -50,10 +50,10 @@ public class Certification {
 	public void setGwCenter(String gwCenter) {
 		this.gwCenter = gwCenter;
 	}
-	public String getCertID() {
+	public int getCertID() {
 		return certID;
 	}
-	public void setCertID(String certID) {
+	public void setCertID(int certID) {
 		this.certID = certID;
 	}
 	

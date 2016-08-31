@@ -3,9 +3,7 @@ package org.git.spring.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Certification;
@@ -13,13 +11,14 @@ import org.git.spring.model.client.CertificationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/cert")
@@ -39,12 +38,20 @@ public class CertificationTrackerController {
 		return "certhome";
 	}
 	
+	@RequestMapping("/remove-cert/{certID}")
+	public String removeCertifications(@PathVariable("certID") int certID){
+		System.out.println("Certification to be removed >> "+certID);
+		employeeCertDAOImpl.removeCertification(certID);
+		return "redirect:/cert/list-all-cert";
+	}
+	
 	@RequestMapping("/list-all-cert")
-	public String listAllCertifications(ModelMap certList){
+	public ModelAndView listAllCertifications(){
+		ModelAndView mandv=new ModelAndView("certificationlist");
 		List<Certification> cList = employeeCertDAOImpl.getAllCertifications();
-		certList.addAttribute("certficationList", cList);
-		System.out.println("Size is >>"+employeeCertDAOImpl.getAllCertifications().size());
-		return "certificationlist";
+		mandv.addObject("certficationList", cList);
+		System.out.println("Size is >>"+employeeCertDAOImpl.getAllCertifications());
+		return mandv;
 	}
 	
 	@RequestMapping(value="/add-new-cert", method=RequestMethod.GET,params="new")
@@ -67,7 +74,7 @@ public class CertificationTrackerController {
 			e.printStackTrace();
 		} 
 		employeeCertDAOImpl.addNewCertification(certification);		
-		return "enrollconfirm";
+		return "redirect:/cert/list-all-cert";
 	}
 	@InitBinder
 	private void dateBinder(WebDataBinder webDataBinder){
