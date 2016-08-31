@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Certification;
+import org.git.spring.model.client.CertificationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -35,17 +36,18 @@ public class CertificationTrackerController {
 	}
 	
 	@RequestMapping(value="/add-new-cert", method=RequestMethod.GET,params="new")
-	public String addNewCertifications(@ModelAttribute Certification certification){
+	public String addNewCertifications(@ModelAttribute("certificationForm") CertificationForm certificationForm){
 		return "certadd";
 	}
 	
 	@RequestMapping(value="/add-new-cert-submit",method=RequestMethod.POST)
-	public String addNewCertificationSubmit(@Valid Certification certification, BindingResult bindingResult){
+	public String addNewCertificationSubmit(@Valid CertificationForm certificationForm, BindingResult bindingResult){
 		if(bindingResult.hasErrors()){
+			System.out.println("!!! Screen has error !!!");
 			return "certadd";
 		}
-		System.out.println("Date >>> "+ certification.getAvailableSince());
-		employeeCertDAOImpl.addNewCertification(certification);		
+		System.out.println("Date >>> "+ certificationForm.getAvailableSince());
+		//employeeCertDAOImpl.addNewCertification(certification);		
 		return "enrollconfirm";
 	}
 	
