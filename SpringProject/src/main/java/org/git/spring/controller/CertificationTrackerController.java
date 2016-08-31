@@ -2,7 +2,10 @@ package org.git.spring.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import javax.validation.Valid;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Certification;
@@ -10,6 +13,7 @@ import org.git.spring.model.client.CertificationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -36,7 +40,9 @@ public class CertificationTrackerController {
 	}
 	
 	@RequestMapping("/list-all-cert")
-	public String listAllCertifications(){
+	public String listAllCertifications(ModelMap certList){
+		List<Certification> cList = employeeCertDAOImpl.getAllCertifications();
+		certList.addAttribute("certficationList", cList);
 		System.out.println("Size is >>"+employeeCertDAOImpl.getAllCertifications().size());
 		return "certificationlist";
 	}
@@ -53,8 +59,6 @@ public class CertificationTrackerController {
 			return "certadd";
 		}
 		try {
-			//Date newDate = new SimpleDateFormat("MM/dd/yyyy").parse(certification.getAvailableSince().toString());
-			//System.out.println("newDate >> "+newDate);
 			BeanUtils.copyProperties(certification, certificationForm);
 			System.out.println("certification Date >>> "+ certification.getAvailableSince()+","+
 					"certificationForm Date >>> "+ certificationForm.getAvailableSince().toString());
