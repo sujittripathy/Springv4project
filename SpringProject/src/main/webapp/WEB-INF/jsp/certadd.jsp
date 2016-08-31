@@ -9,32 +9,33 @@
 </head>
 <body>
 <h2>Fill below details to add new certification to database</h2>
+
 	<form:form action="/cert/add-new-cert-submit" modelAttribute="certificationForm">
 		<table>
 			<tr>
 				<td>Name</td>
 				<td><form:input path="certName" type="text"/></td>
-				<td><form:errors path="certName"/></td>
+				<td><form:errors path="certName" cssStyle="color:red"/></td>
 			</tr>
 			<tr>
 				<td>Version</td>
 				<td><form:input path="version" type="text"/></td>
-				<td><form:errors path="version"/></td>
+				<td><form:errors path="version" cssStyle="color:red"/></td>
 			</tr>
 			<tr>
 				<td>Module</td>
 				<td><form:input path="module" type="text"/></td>
-				<td><form:errors path="module"/></td>
+				<td><form:errors path="module" cssStyle="color:red"/></td>
 			</tr>
 			<tr>
 				<td>GW Center</td>
 				<td><form:input path="gwCenter" type="text"/></td>
-				<td><form:errors path="gwCenter"/></td>
+				<td><form:errors path="gwCenter" cssStyle="color:red"/></td>
 			</tr>
 			<tr>
 				<td>Available Since</td>
-				<td><form:input path="availableSince" type="text" /></td>
-				<td><form:errors path="availableSince"/></td>
+				<td><form:input path="availableSince" type="date"/></td>
+				<td><form:errors path="availableSince" cssStyle="color:red"/></td>
 			</tr>
 		</table>
 		<input type="submit" value="Submit Form"/>

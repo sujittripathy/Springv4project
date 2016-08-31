@@ -15,7 +15,9 @@ public class EmployeeCertDAOImpl {
 	
 	public void addNewCertification(Certification cert){
 		Session session = this.sessionFactory.openSession();
+		System.out.println("getAvailableSince >>> "+cert.getAvailableSince());
 		session.save(cert);
+		System.out.println("$$$ Record Stored $$$");
 	}
 	
 	@SuppressWarnings("unchecked")

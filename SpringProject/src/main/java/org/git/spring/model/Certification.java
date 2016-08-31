@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -18,7 +17,6 @@ public class Certification {
 	private String certName;
 	private String version;
 	private String module;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date availableSince;
 	private String gwCenter;
 	
@@ -43,7 +41,7 @@ public class Certification {
 	public Date getAvailableSince() {
 		return availableSince;
 	}
-	public void setAvailableSice(Date availableSince) {
+	public void setAvailableSince(Date availableSince) {
 		this.availableSince = availableSince;
 	}
 	public String getGwCenter() {

@@ -1,13 +1,18 @@
 package org.git.spring.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.validation.Valid;
-
+import org.apache.commons.beanutils.BeanUtils;
 import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Certification;
 import org.git.spring.model.client.CertificationForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +23,9 @@ public class CertificationTrackerController {
 	
 	
 	private EmployeeCertDAOImpl employeeCertDAOImpl;
-	/*@Autowired
-	private Certification certification;*/
+	@Autowired
+	private Certification certification;
+	
 	@Autowired
 	public CertificationTrackerController(EmployeeCertDAOImpl employeeCertDAOImpl){
 		this.employeeCertDAOImpl = employeeCertDAOImpl;
@@ -46,16 +52,24 @@ public class CertificationTrackerController {
 			System.out.println("!!! Screen has error !!!");
 			return "certadd";
 		}
-		System.out.println("Date >>> "+ certificationForm.getAvailableSince());
-		//employeeCertDAOImpl.addNewCertification(certification);		
+		try {
+			//Date newDate = new SimpleDateFormat("MM/dd/yyyy").parse(certification.getAvailableSince().toString());
+			//System.out.println("newDate >> "+newDate);
+			BeanUtils.copyProperties(certification, certificationForm);
+			System.out.println("certification Date >>> "+ certification.getAvailableSince()+","+
+					"certificationForm Date >>> "+ certificationForm.getAvailableSince().toString());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		employeeCertDAOImpl.addNewCertification(certification);		
 		return "enrollconfirm";
 	}
-	
-/*	@InitBinder
+	@InitBinder
 	private void dateBinder(WebDataBinder webDataBinder){
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		sdf.setLenient(false);
 		CustomDateEditor ce = new CustomDateEditor(sdf, true);
 		webDataBinder.registerCustomEditor(Date.class, ce);
-	}*/
+	}
 }
