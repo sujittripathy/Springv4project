@@ -34,7 +34,8 @@ public class EmployeeCertDAOImpl {
 
 	public Certification getCertification(int certID){
 		Session session = this.sessionFactory.openSession();
-		return (Certification)session.createQuery("from Certification certification where certID = "+certID);
+		return (Certification)session
+					.createQuery("from Certification certification where certID = "+certID).uniqueResult();
 	}
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

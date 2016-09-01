@@ -24,15 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/cert")
 public class CertificationTrackerController {
 	
-	
+	@Autowired
 	private EmployeeCertDAOImpl employeeCertDAOImpl;
 	@Autowired
 	private Certification certification;
 	
-	@Autowired
-	public CertificationTrackerController(EmployeeCertDAOImpl employeeCertDAOImpl){
-		this.employeeCertDAOImpl = employeeCertDAOImpl;
-	}
+	
 	@RequestMapping("/home")
 	public String home(){
 		return "certhome";

@@ -18,7 +18,10 @@
 				<td><c:out value="${item.availableSince}" /></td>
 				<td><c:out value="${item.gwCenter}" /></td>
 				<td><a href="/cert/remove-cert/<c:out value="${item.certID}"/>"> Delete</a></td>
-			</tr>
+				<form:form method="delete" action="/certificates/${item.certID}">
+					<td><input type="submit" value="Delete Rest"/></td>
+				</form:form>
+				</tr>
 		</table>
 	</c:forEach>
 	<a href="/cert/home">Back</a>

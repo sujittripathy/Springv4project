@@ -13,6 +13,8 @@
 <h3><a href="/cert/add-new-cert?new">New Certification Enroll</a></h3>
 <br/>
 <h3><a href="">New Employee Enroll</a></h3>
+<hr>
+<h3><a href="/certificates">List All Certification (REST)</a></h3>
 
 </body>
 </html>
