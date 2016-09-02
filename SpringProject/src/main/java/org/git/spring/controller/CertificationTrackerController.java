@@ -30,6 +30,9 @@ public class CertificationTrackerController {
 	private Certification certification;
 	
 	
+	/*public CertificationTrackerController(EmployeeCertDAOImpl employeeCertDAOImpl){
+		this.employeeCertDAOImpl = employeeCertDAOImpl;
+	}*/
 	@RequestMapping("/home")
 	public String home(){
 		return "certhome";

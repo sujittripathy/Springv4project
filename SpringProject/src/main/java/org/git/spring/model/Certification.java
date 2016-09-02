@@ -5,11 +5,12 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
+@Table(name="CERTIFICATION_INFO")
 public class Certification {
 	@Id
 	@GeneratedValue

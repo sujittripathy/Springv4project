@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CertificationForm {
 		@Size(min=5, max=100, message="name is incorrect")
 		private String certName;
