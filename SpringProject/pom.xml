@@ -117,6 +117,7 @@
 					<contextReloadable>true</contextReloadable>
 					<port>8080</port>
 					<path>/</path>
+					<argLine>-Xmx1024m</argLine>
 				</configuration>
 			</plugin>
 		</plugins>

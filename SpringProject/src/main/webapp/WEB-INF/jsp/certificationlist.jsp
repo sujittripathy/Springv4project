@@ -21,9 +21,12 @@
 				<form:form method="delete" action="/certificates/${item.certID}">
 					<td><input type="submit" value="Delete Rest"/></td>
 				</form:form>
+				<form:form method="delete" action="/certificates/delete/${item.certID}">
+					<td><input type="submit" value="Delete Rest Object"/></td>
+				</form:form>
 				</tr>
 		</table>
 	</c:forEach>
-	<a href="/cert/home">Back</a>
+	<a href="/cert/home">Home</a>
 </body>
 </html>

@@ -20,6 +20,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>
@@ -31,4 +32,9 @@
 		<property name="username" value="${jdbc.user}" />
 		<property name="password" value="${jdbc.pass}" />
 	</bean>
+	
+	<!-- <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> -->
 </beans>

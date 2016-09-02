@@ -2,9 +2,15 @@ package org.git.spring.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -18,7 +24,12 @@ public class Certification {
 	private String version;
 	private String module;
 	private Date availableSince;
+	//@Transient
 	private String gwCenter;
+	@OneToOne(cascade=CascadeType.ALL,
+			fetch=FetchType.EAGER)
+	@JoinColumn//(name="testCenterLocation_FK")
+	private TestCenterLocation testCenterLocation;
 	
 	public String getCertName() {
 		return certName;
@@ -55,6 +66,18 @@ public class Certification {
 	}
 	public void setCertID(int certID) {
 		this.certID = certID;
+	}
+	
+	@Override
+	public String toString(){
+		return "["+getCertID()+","+getCertName()+","
+					+getVersion()+","+getModule()+","+getAvailableSince()+"]";
+	}
+	public TestCenterLocation getTestCenterLocation() {
+		return testCenterLocation;
+	}
+	public void setTestCenterLocation(TestCenterLocation testCenterLocation) {
+		this.testCenterLocation = testCenterLocation;
 	}
 	
 }
