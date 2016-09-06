@@ -1,6 +1,9 @@
 package org.git.spring.dao;
 
 import java.util.List;
+
+import javax.ws.rs.WebApplicationException;
+
 import org.git.spring.model.Certification;
 import org.git.spring.model.TestCenterLocation;
 import org.hibernate.Criteria;
@@ -28,16 +31,22 @@ public class EmployeeCertDAOImpl {
 	}
 	
 	
-	public void removeCertification(int certID){
+	public boolean removeCertification(int certID){
 		
 		/*Session session = this.sessionFactory.openSession();
 		session.createQuery("delete from Certification where certID="+certID).executeUpdate();
 		System.out.println("$$$ Certification Removed $$$");*/
 		
 		Certification cert = getCertification(certID);
-		Session session = this.sessionFactory.openSession();
-		session.delete(cert);
-		System.out.println("$$$ Certification Object Removed [New Way]$$$"+ cert);
+		if(cert!=null){
+			Session session = this.sessionFactory.openSession();
+			session.delete(cert);
+			session.flush();
+			System.out.println("$$$ Certification Object Removed [New Way]$$$"+ cert);
+			return true;
+		}else {
+			throw new WebApplicationException(404);
+		}		
 	}
 	
 	public void removeCertificationObject(Certification cert){

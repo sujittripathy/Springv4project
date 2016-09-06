@@ -1,7 +1,6 @@
 package org.git.spring.model;
 
 import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.stereotype.Component;
 
+@XmlRootElement
 @Entity
 @Component
 //@Table(name="CERTIFICATION_INFO")

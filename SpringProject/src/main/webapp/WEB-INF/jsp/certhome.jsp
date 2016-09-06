@@ -16,6 +16,7 @@
 <hr>
 <h3>REST Test</h3>
 <h3><a href="/jersey/cert/all">List All Certification </a></h3>
+<h3><a href="/jersey/cert/find/1">Get first Certification </a></h3>
 
 </body>
 </html>

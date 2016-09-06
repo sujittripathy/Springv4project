@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @XmlRootElement
 @Component
 public class CertificationForm {
+		private int certID;
 		@Size(min=5, max=100, message="name is incorrect")
 		private String certName;
 		private String version;
@@ -46,5 +47,11 @@ public class CertificationForm {
 		}
 		public void setGwCenter(String gwCenter) {
 			this.gwCenter = gwCenter;
+		}
+		public int getCertID() {
+			return certID;
+		}
+		public void setCertID(int certID) {
+			this.certID = certID;
 		}
 }

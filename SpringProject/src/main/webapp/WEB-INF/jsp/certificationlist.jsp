@@ -12,6 +12,7 @@
 	<c:forEach items="${certficationList}" var="item">
 		<table border="1">
 			<tr>
+				<td><c:out value="${item.certID}" /> 
 				<td><c:out value="${item.certName}" /> 
 				<td><c:out value="${item.version}" /></td>
 				<td><c:out value="${item.module}" /></td>
