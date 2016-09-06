@@ -8,39 +8,6 @@
 </head>
 <body>
 <h2>Fill below details to add new certification to database</h2>
-<<<<<<< HEAD
-	<form:form action="/cert/add-new-cert-submit" modelAttribute="certificationForm">
-		
-			<div>
-				<label for="name">Name : </label>
-				<form:input path="certName" type="text"/>
-				<form:errors path="certName" cssStyle="color:red"/>
-			</div>
-			<div>
-				<label for="version">Version : </label>
-				<form:input path="version" type="text"/>
-				<form:errors path="version" cssStyle="color:red"/>
-			</div>
-			<div>
-				<label for="module">Module : </label>
-				<form:input path="module" type="text"/>
-				<form:errors path="module" cssStyle="color:red"/>
-			</div>
-			<div>
-				<label for="center">GW Center : </label>
-				<form:input path="gwCenter" type="text"/>
-				<form:errors path="gwCenter" cssStyle="color:red"/>
-			</div>
-			<div>
-				<label for="since">Available Since : </label>
-				<form:input path="availableSince" type="date"/>
-				<form:errors path="availableSince" cssStyle="color:red"/>
-			</div>
-		<div class="button">
-			<input type="submit" value="Submit Form" />
-		</div>
-=======
-
 	<form:form action="/spring/cert/add-new-cert-submit" modelAttribute="certificationForm">
 		<table>
 			<tr>
@@ -70,7 +37,6 @@
 			</tr>
 		</table>
 		<input type="submit" value="Submit Form"/>
->>>>>>> branch 'master' of https://github.com/sujittripathy/spring-projects.git
 	</form:form>
 	<a href="/cert/home">Home</a>
 </body>

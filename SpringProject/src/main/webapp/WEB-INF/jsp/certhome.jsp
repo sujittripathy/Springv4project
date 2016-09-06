@@ -14,7 +14,8 @@
 <br/>
 <h3><a href="">New Employee Enroll</a></h3>
 <hr>
-<h3><a href="/spring/certificates">List All Certification (REST)</a></h3>
+<h3>REST Test</h3>
+<h3><a href="/jersey/cert/all">List All Certification </a></h3>
 
 </body>
 </html>
