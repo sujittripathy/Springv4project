@@ -27,6 +27,10 @@
 				</tr>
 		</table>
 	</c:forEach>
+<<<<<<< HEAD
 	<a href="/cert/home">Home</a>
+=======
+	<a href="/spring/cert/home">Back</a>
+>>>>>>> branch 'master' of https://github.com/sujittripathy/spring-projects.git
 </body>
 </html>

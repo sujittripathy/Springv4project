@@ -1,7 +1,6 @@
 package org.git.spring.dao;
 
 import java.util.List;
-
 import org.git.spring.model.Certification;
 import org.git.spring.model.TestCenterLocation;
 import org.hibernate.Criteria;
@@ -9,11 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class EmployeeCertDAOImpl {
 
+	@Autowired
 	public SessionFactory sessionFactory;
 	
 	public void addNewCertification(Certification cert){
@@ -49,8 +49,14 @@ public class EmployeeCertDAOImpl {
 	
 	@SuppressWarnings("unchecked")
 	public List<Certification> getAllCertifications(){
+		System.out.println("sessionFactory obj >>"+this.sessionFactory);
 		Session session = this.sessionFactory.openSession();
+		System.out.println("SESSION obj "+session);
 		return session.createQuery("from Certification certification").list();
+	}
+	
+	public List<Certification> getAllCertBooks(){
+		return sessionFactory.openSession().createCriteria(Certification.class).list();
 	}
 
 	public Certification getCertification(int certID){
@@ -68,7 +74,7 @@ public class EmployeeCertDAOImpl {
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
-	@Autowired
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

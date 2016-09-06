@@ -7,15 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Transient;
+=======
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+>>>>>>> branch 'master' of https://github.com/sujittripathy/spring-projects.git
 
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
+//@Table(name="CERTIFICATION_INFO")
 public class Certification {
 	@Id
 	@GeneratedValue

@@ -3,7 +3,12 @@ package org.git.spring.model.client;
 import java.util.Date;
 
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.stereotype.Component;
+
+@XmlRootElement
+@Component
 public class CertificationForm {
 		@Size(min=5, max=100, message="name is incorrect")
 		private String certName;
