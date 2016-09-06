@@ -1,14 +1,13 @@
 package org.git.spring.dao;
 
 import java.util.List;
-
 import org.git.spring.model.Certification;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("employeeCertDAOImpl")
+@Repository
 public class EmployeeCertDAOImpl {
 
 	@Autowired

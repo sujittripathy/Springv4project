@@ -2,6 +2,7 @@ package org.git.rest.jersey;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -9,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.git.spring.dao.EmployeeCertDAOImpl;
 import org.git.spring.model.Certification;
+import org.git.spring.util.SpringProjectUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +20,13 @@ public class JerseyRestfulResource {
 
 	@Autowired
 	private EmployeeCertDAOImpl employeeCertDAOImpl;
+	@Inject
+	private SpringProjectUtil springProjectUtil;
 	
 	@GET
 	@Path("test")
 	public String getCertTest(){
-		return "Certification Test Successful !!!";
+		return springProjectUtil.getMeHelloW();
 	}
 	
 	@GET
