@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name="CERTIFICATION_INFO")
+//@Table(name="CERTIFICATION_INFO")
 public class Certification {
 	@Id
 	@GeneratedValue

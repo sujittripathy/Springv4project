@@ -74,7 +74,7 @@ public class CertificationTrackerController {
 			e.printStackTrace();
 		} 
 		employeeCertDAOImpl.addNewCertification(certification);		
-		return "redirect:/cert/list-all-cert";
+		return "redirect:/spring/cert/list-all-cert";
 	}
 	@InitBinder
 	private void dateBinder(WebDataBinder webDataBinder){

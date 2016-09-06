@@ -10,7 +10,7 @@
 <body>
 <h2>Fill below details to add new certification to database</h2>
 
-	<form:form action="/cert/add-new-cert-submit" modelAttribute="certificationForm">
+	<form:form action="/spring/cert/add-new-cert-submit" modelAttribute="certificationForm">
 		<table>
 			<tr>
 				<td>Name</td>

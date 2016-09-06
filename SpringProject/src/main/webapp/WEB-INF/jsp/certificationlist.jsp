@@ -24,6 +24,6 @@
 				</tr>
 		</table>
 	</c:forEach>
-	<a href="/cert/home">Back</a>
+	<a href="/spring/cert/home">Back</a>
 </body>
 </html>
