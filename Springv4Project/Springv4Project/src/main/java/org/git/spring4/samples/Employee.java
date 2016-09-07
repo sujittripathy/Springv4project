@@ -17,4 +17,5 @@ public class Employee {
 	public void clean(){
 		System.out.println("Destroying..");
 	}
+
 }
